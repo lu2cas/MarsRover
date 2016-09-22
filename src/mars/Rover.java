@@ -38,38 +38,40 @@ public class Rover {
 		this.currentOrientation = currentOrientation;
 	}
 
-	public void rotateLeft() {
+	public boolean rotateLeft() {
 		switch (this.currentOrientation) {
 			case "N":
 				this.currentOrientation = "W";
-				break;
+				return true;
 			case "W":
 				this.currentOrientation = "S";
-				break;
+				return true;
 			case "S":
 				this.currentOrientation = "E";
-				break;
+				return true;
 			case "E":
 				this.currentOrientation = "N";
-				break;
+				return true;
 		}
+		return false;
 	}
 
-	public void rotateRight() {
+	public boolean rotateRight() {
 		switch (this.currentOrientation) {
 			case "N":
 				this.currentOrientation = "E";
-				break;
+				return true;
 			case "E":
 				this.currentOrientation = "S";
-				break;
+				return true;
 			case "S":
 				this.currentOrientation = "W";
-				break;
+				return true;
 			case "W":
 				this.currentOrientation = "N";
-				break;
+				return true;
 		}
+		return false;
 	}
 
 	public boolean moveForward() {
