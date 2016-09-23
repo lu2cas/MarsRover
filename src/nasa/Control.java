@@ -113,14 +113,14 @@ public class Control {
 			rover = this.rovers.get(n);
 			movement = this.movements.get(n);
 			for (char c : movement.toCharArray()) {
-				switch (String.valueOf(c)) {
-					case "L":
+				switch (c) {
+					case 'L':
 						rover.rotateLeft();
 						break;
-					case "R":
+					case 'R':
 						rover.rotateRight();
 						break;
-					case "M":
+					case 'M':
 						rover.moveForward();
 						break;
 				}
