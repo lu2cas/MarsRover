@@ -4,11 +4,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		Control control = new Control();
-		control.readCommands();
-		if (control.parseCommands()) {
-			System.out.println("HELL YEAH!");
+		control.readInput();
+		if (control.parseInput()) {
+			control.executeMovements();
+			control.showOutput();
 		} else {
-			System.out.println("ERROR!");
+			System.out.println("Formato de entrada de dados incorreto!");
 		}
 	}
 

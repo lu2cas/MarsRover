@@ -11,7 +11,7 @@ public class Plateau {
 	}
 
 	public int getMaxX() {
-		return maxX;
+		return this.maxX;
 	}
 
 	public void setMaxX(int maxX) {
@@ -19,7 +19,7 @@ public class Plateau {
 	}
 
 	public int getMaxY() {
-		return maxY;
+		return this.maxY;
 	}
 
 	public void setMaxY(int maxY) {

@@ -15,7 +15,7 @@ public class Control {
 	private ArrayList<Rover> rovers;
 	private ArrayList<String> movements;
 
-	private ArrayList<String> commands;
+	private ArrayList<String> input;
 
 	private List<String> validOrientations;
 	private List<String> validMovements;
@@ -29,30 +29,30 @@ public class Control {
 		this.movements = new ArrayList<String>();
 		this.rovers = new ArrayList<Rover>();
 
-		this.commands = new ArrayList<String>();
+		this.input = new ArrayList<String>();
 	}
 
-	public void readCommands() {
-		this.commands.clear();
+	public void readInput() {
+		this.input.clear();
 		String command = "";
 
-		System.out.println("*** MARS ROVERS ***");
-		System.out.println("Insira os comandos:");
+		System.out.println("*** MARS ROVER ***");
+		System.out.println("Entrada de dados (digite \".\" para encerrar):");
 
-		while(!command.equals("END")) {
+		while(!command.equals(".")) {
 			command = scanner.nextLine();
-			if (!command.equals("END")) {
-				this.commands.add(command);
+			if (!command.equals(".")) {
+				this.input.add(command);
 			}
 		}
 	}
 
-	public boolean parseCommands() {
-		if (this.commands.size() > 1 && this.commands.size() % 2 == 1) {
+	public boolean parseInput() {
+		if (this.input.size() > 1 && this.input.size() % 2 == 1) {
 			try {
 				// Plateau
 				String[] plateau_dimensions = new String[2];
-				plateau_dimensions = this.commands.remove(0).split(" ");
+				plateau_dimensions = this.input.remove(0).split(" ");
 				int plateau_max_x = Integer.parseInt(plateau_dimensions[0]);
 				int plateau_max_y = Integer.parseInt(plateau_dimensions[1]);
 	
@@ -69,15 +69,15 @@ public class Control {
 				int rover_deployment_y;
 				String rover_deployment_orientation;
 	
-				for (int n = 0; n < this.commands.size(); n += 2) {
-					command = this.commands.get(n);
+				for (int n = 0; n < this.input.size(); n += 2) {
+					command = this.input.get(n);
 	
 					rover_deployment = command.split(" ");
 					rover_deployment_x = Integer.parseInt(rover_deployment[0]);
 					rover_deployment_y = Integer.parseInt(rover_deployment[1]);
 					rover_deployment_orientation = rover_deployment[2];
 
-					if (rover_deployment_x >= 0 && rover_deployment_x < plateau_max_x && rover_deployment_y >= 0 && rover_deployment_y < plateau_max_y && this.validOrientations.contains(rover_deployment_orientation)) {
+					if (rover_deployment_x >= 0 && rover_deployment_x <= plateau_max_x && rover_deployment_y >= 0 && rover_deployment_y <= plateau_max_y && this.validOrientations.contains(rover_deployment_orientation)) {
 						this.rovers.add(new Rover(rover_deployment_x, rover_deployment_y, rover_deployment_orientation, this.plateau));
 					} else {
 						return false;
@@ -86,8 +86,8 @@ public class Control {
 
 				// Movements
 				String movement;
-				for (int n = 1; n < this.commands.size(); n += 2) {
-					movement = this.commands.get(n);
+				for (int n = 1; n < this.input.size(); n += 2) {
+					movement = this.input.get(n);
 					for (char c : movement.toCharArray()) {
 						if (!this.validMovements.contains(String.valueOf(c))) {
 							return false;
@@ -102,6 +102,36 @@ public class Control {
 			}
 		} else {
 			return false;
+		}
+	}
+
+	public void executeMovements() {
+		Rover rover;
+		String movement;
+
+		for (int n = 0; n < this.rovers.size(); n++) {
+			rover = this.rovers.get(n);
+			movement = this.movements.get(n);
+			for (char c : movement.toCharArray()) {
+				switch (String.valueOf(c)) {
+					case "L":
+						rover.rotateLeft();
+						break;
+					case "R":
+						rover.rotateRight();
+						break;
+					case "M":
+						rover.moveForward();
+						break;
+				}
+			}
+		}
+	}
+
+	public void showOutput() {
+		System.out.println("Saída de dados:");
+		for (Rover rover : this.rovers) {
+			System.out.println(rover.getCurrentX() + " " + rover.getCurrentY() + " " + rover.getCurrentOrientation());
 		}
 	}
 }

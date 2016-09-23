@@ -15,7 +15,7 @@ public class Rover {
 	}
 
 	public int getCurrentX() {
-		return currentX;
+		return this.currentX;
 	}
 
 	public void setCurrentX(int currentX) {
@@ -23,7 +23,7 @@ public class Rover {
 	}
 
 	public int getCurrentY() {
-		return currentY;
+		return this.currentY;
 	}
 
 	public void setCurrentY(int currentY) {
@@ -31,66 +31,64 @@ public class Rover {
 	}
 
 	public String getCurrentOrientation() {
-		return currentOrientation;
+		return this.currentOrientation;
 	}
 
 	public void setCurrentOrientation(String currentOrientation) {
 		this.currentOrientation = currentOrientation;
 	}
 
-	public boolean rotateLeft() {
+	public void rotateLeft() {
 		switch (this.currentOrientation) {
 			case "N":
 				this.currentOrientation = "W";
-				return true;
+				break;
 			case "W":
 				this.currentOrientation = "S";
-				return true;
+				break;
 			case "S":
 				this.currentOrientation = "E";
-				return true;
+				break;
 			case "E":
 				this.currentOrientation = "N";
-				return true;
+				break;
 		}
-		return false;
 	}
 
-	public boolean rotateRight() {
+	public void rotateRight() {
 		switch (this.currentOrientation) {
 			case "N":
 				this.currentOrientation = "E";
-				return true;
+				break;
 			case "E":
 				this.currentOrientation = "S";
-				return true;
+				break;
 			case "S":
 				this.currentOrientation = "W";
-				return true;
+				break;
 			case "W":
 				this.currentOrientation = "N";
-				return true;
+				break;
 		}
-		return false;
 	}
 
 	public boolean moveForward() {
-		if (this.currentOrientation == "N") {
+		if (this.currentOrientation.equals("N")) {
 			if (this.currentY < this.plateau.getMaxY()) {
 				this.currentY++;
 				return true;
 			}
-		} else if (this.currentOrientation == "S") {
+		} else if (this.currentOrientation.equals("S")) {
 			if (this.currentY > 0) {
 				this.currentY--;
 				return true;
 			}
-		} else if (this.currentOrientation == "W") {
+		} else if (this.currentOrientation.equals("W")) {
 			if (this.currentX > 0) {
 				this.currentX--;
 				return true;
 			}
-		} else if (this.currentOrientation == "E") {
+		} else if (this.currentOrientation.equals("E")) {
 			if (this.currentX < this.plateau.getMaxX()) {
 				this.currentX++;
 				return true;
