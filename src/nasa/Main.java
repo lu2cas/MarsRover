@@ -1,4 +1,4 @@
-import nasa.*;
+package nasa;
 
 public class Main {
 
