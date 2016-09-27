@@ -18,24 +18,12 @@ public class Rover {
 		return this.currentX;
 	}
 
-	public void setCurrentX(int currentX) {
-		this.currentX = currentX;
-	}
-
 	public int getCurrentY() {
 		return this.currentY;
 	}
 
-	public void setCurrentY(int currentY) {
-		this.currentY = currentY;
-	}
-
 	public String getCurrentOrientation() {
 		return this.currentOrientation;
-	}
-
-	public void setCurrentOrientation(String currentOrientation) {
-		this.currentOrientation = currentOrientation;
 	}
 
 	public void rotateLeft() {

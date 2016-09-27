@@ -14,15 +14,7 @@ public class Plateau {
 		return this.maxX;
 	}
 
-	public void setMaxX(int maxX) {
-		this.maxX = maxX;
-	}
-
 	public int getMaxY() {
 		return this.maxY;
-	}
-
-	public void setMaxY(int maxY) {
-		this.maxY = maxY;
 	}
 }
