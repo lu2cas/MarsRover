@@ -48,7 +48,9 @@ public class Control {
 	}
 
 	public void setInput(String input) {
-		String[] lines = input.split(System.lineSeparator());
+		this.input.clear();
+
+		String[] lines = input.split("\n");
 		for (int c = 0; c < lines.length; c++) {
 			this.input.add(lines[c]);
 		}
@@ -133,6 +135,10 @@ public class Control {
 				}
 			}
 		}
+	}
+
+	public ArrayList<Rover> getRovers() {
+		return this.rovers;
 	}
 
 	public void showOutput() {
