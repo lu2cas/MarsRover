@@ -47,6 +47,13 @@ public class Control {
 		}
 	}
 
+	public void setInput(String input) {
+		String[] lines = input.split(System.lineSeparator());
+		for (int c = 0; c < lines.length; c++) {
+			this.input.add(lines[c]);
+		}
+	}
+
 	public boolean parseInput() {
 		if (this.input.size() > 1 && this.input.size() % 2 == 1) {
 			try {
