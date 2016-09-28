@@ -17,7 +17,7 @@ public class ControlTest {
 	@Before
 	public void setUp() throws Exception {
 		this.control = new Control();
-		control.setInput("5 5" + "\n" + "1 2 N" + "\n" + "LMLMLMLMM" + "\n" + "3 3 E" + "\n" + "MMRMMRMRRM");
+		control.setInput("5 5" + System.lineSeparator() + "1 2 N" + System.lineSeparator() + "LMLMLMLMM" + System.lineSeparator() + "3 3 E" + System.lineSeparator() + "MMRMMRMRRM");
 	}
 
 	@Test

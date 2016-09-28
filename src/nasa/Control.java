@@ -50,7 +50,7 @@ public class Control {
 	public void setInput(String input) {
 		this.input.clear();
 
-		String[] lines = input.split("\n");
+		String[] lines = input.split(System.lineSeparator());
 		for (int c = 0; c < lines.length; c++) {
 			this.input.add(lines[c]);
 		}
